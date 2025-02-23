@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Algorithm Learning Platform</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">AlgoLearn</div>
+      <ul class="nav-links">
+        <li><a href="dashboard.html" class="active" id="home">Home</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="#" id="logout">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="dashboard">
+      <!-- Welcome Message -->
+      <h1 id="welcome-message">Welcome Back!</h1>
+
+      <!-- Progress Section -->
+      <div class="progress-section" id="progress-section" style="display: none;">
+        <h2>Your Learning Progress</h2>
+        <div class="progress-bar-container">
+          <label for="progress">Overall Progress:</label>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
+          </div>
+          <p id="progress-text">0% Completed</p>
+        </div>
+      </div>
+
+      <!-- Last Viewed Item Section -->
+<div class="last-viewed-item-section" id="lastViewedItemContainer" style="display: none;">
+  <h2>Continue from Last Viewed</h2>
+  <p>
+    <a id="lastViewedItemLink" href="#" style="display: none; font-weight: bold;"></a>
+  </p>
+</div>
+
+      <!-- Suggestions Section -->
+      <div class="suggestions-section" id="suggestions-section" style="display: none;">
+        <h2>Suggestions for You</h2>
+        <ul id="suggestions-list">
+          <!-- Suggestions will be dynamically added here -->
+        </ul>
+      </div>
+
+      <!-- Friendly Message Section -->
+      <div class="friendly-message" id="friendly-message" style="display: none;">
+        <h2 id="friendly-title">Welcome to AlgoLearn!</h2>
+        <p id="friendly-text">It looks like you're just getting started. Explore our learning modules to begin your journey!</p>
+        <a href="learn.html" class="option" id="start-learning-btn">Start Learning</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 AlgoLearn. All Rights Reserved. <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a></p>
+  </footer>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

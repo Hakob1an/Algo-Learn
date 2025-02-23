@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linked List | Data Structures Learning Platform</title>
+    <link rel="stylesheet" href="linkedlist.css">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo"><a href="../../home.html">AlgoLearn</a></div>
+            <ul class="nav-links">
+                <li><a href="../../home.html">Home</a></li>
+                <li><a href="../../learn.html">Learn</a></li>
+                <li><a href="../../profile.html">Profile</a></li>
+                <li><a href="../../about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Linked List</h1>
+
+        <p>
+            A <strong>linked list</strong> is a linear data structure where elements (called nodes) are not stored at
+            contiguous memory locations.
+            Instead, each node contains two parts:
+        </p>
+        <ul>
+            <li><strong>Data:</strong> The value or information stored.</li>
+            <li><strong>Pointer (or Reference):</strong> A link to the next node in the sequence.</li>
+        </ul>
+
+        <h2>Types of Linked Lists</h2>
+        <ul>
+            <li><strong>Singly Linked List:</strong> Each node points only to the next node.</li>
+            <li><strong>Doubly Linked List:</strong> Each node has two pointers: one to the next node and one to the
+                previous node.</li>
+            <li><strong>Circular Linked List:</strong> The last node points back to the first node, forming a circle.
+            </li>
+        </ul>
+
+        <h2>How It Works</h2>
+        <p>
+            A node in a singly linked list can be visualized as:
+        </p>
+        <pre>[ data | next ]  ->  [ data | next ]  ->  ...  ->  null</pre>
+
+        <h2>Dynamic Size</h2>
+        <p>
+            Unlike arrays, linked lists are dynamic, meaning they can grow or shrink during runtime without needing to
+            allocate a large block of memory in advance.
+        </p>
+
+        <h2>Insertion and Deletion</h2>
+        <p>
+            Operations like inserting or deleting a node can be done efficiently if you have a reference to the correct
+            node (or its predecessor),
+            often in constant time <code>O(1)</code>. However, finding a node might require traversal, making the
+            operation <code>O(n)</code> in the worst case.
+        </p>
+
+        <h2>Pseudocode Examples</h2>
+
+        <h3>Node Definition</h3>
+        <pre>
+class Node:
+    data
+    next  // Pointer to the next node
+
+function createNode(value):
+    node = new Node
+    node.data = value
+    node.next = null
+    return node
+        </pre>
+
+        <h3>Insertion at the Beginning</h3>
+        <pre>
+function insertAtBeginning(head, value):
+    newNode = createNode(value)
+    newNode.next = head
+    head = newNode
+    return head
+        </pre>
+
+        <h3>Insertion at the End</h3>
+        <pre>
+function insertAtEnd(head, value):
+    newNode = createNode(value)
+    if head == null:
+        head = newNode
+        return head
+    current = head
+    while current.next != null:
+        current = current.next
+    current.next = newNode
+    return head
+        </pre>
+
+        <h3>Deletion of a Node (by key)</h3>
+        <pre>
+function deleteNode(head, key):
+    if head == null:
+        return null
+    if head.data == key:
+        head = head.next
+        return head
+    current = head
+    while current.next != null and current.next.data != key:
+        current = current.next
+    if current.next != null:
+        current.next = current.next.next
+    return head
+        </pre>
+
+        <h3>Traversal (Printing All Nodes)</h3>
+        <pre>
+function traverse(head):
+    current = head
+    while current != null:
+        print(current.data)
+        current = current.next
+        </pre>
+
+        <h2>Time and Space Complexity</h2>
+
+        <h3>Time Complexity</h3>
+        <ul>
+            <li><strong>Insertion at Beginning:</strong> <code>O(1)</code> (Directly adjusts pointers without traversal)
+            </li>
+            <li><strong>Insertion at End:</strong> <code>O(n)</code> (Requires traversing the entire list to reach the
+                end, unless a tail pointer is maintained)</li>
+            <li><strong>Deletion:</strong> <code>O(n)</code> (May require traversal to find the node or its predecessor)
+            </li>
+            <li><strong>Search/Traversal:</strong> <code>O(n)</code> (In the worst case, you may need to look at every
+                node)</li>
+        </ul>
+
+        <h3>Space Complexity</h3>
+        <ul>
+            <li><code>O(n)</code>: The list requires space for <code>n</code> nodes.</li>
+            <li>Each node stores data and a pointer, so the extra space per node is constant <code>O(1)</code>, making
+                the overall space complexity linear.</li>
+        </ul>
+
+        <h2>Advantages and Disadvantages</h2>
+
+        <h3>Advantages</h3>
+        <ul>
+            <li><strong>Dynamic Size:</strong> Easy to grow or shrink the list during runtime.</li>
+            <li><strong>Efficient Insertions/Deletions:</strong> Inserting or deleting nodes (especially at the
+                beginning) is efficient.</li>
+            <li><strong>Memory Utilization:</strong> Can be more efficient than arrays when the maximum size is unknown.
+            </li>
+        </ul>
+
+        <h3>Disadvantages</h3>
+        <ul>
+            <li><strong>No Random Access:</strong> Cannot access elements by index directly.</li>
+            <li><strong>Extra Memory Overhead:</strong> Each node requires additional storage for pointers.</li>
+            <li><strong>Cache Inefficiency:</strong> Nodes are scattered in memory, reducing cache performance.</li>
+            <li><strong>Complexity of Operations:</strong> Finding a node for insertion or deletion requires traversal.
+            </li>
+        </ul>
+
+        <h2>Interactive Visualization</h2>
+
+        <div class="visualization-container">
+            <div class="user-input">
+                <label for="insertInput">Insert:</label>
+                <input type="number" id="insertInput" placeholder="Enter a number">
+                <button id="btnInsert">Insert</button>
+
+                <label for="deleteInput">Delete:</label>
+                <input type="number" id="deleteInput" placeholder="Enter a number">
+                <button id="btnDelete">Delete</button>
+
+                <label for="searchInput">Search:</label>
+                <input type="number" id="searchInput" placeholder="Enter a number">
+                <button id="btnSearch">Search</button>
+            </div>
+            <div id="visualization"></div>
+        </div>
+
+        <button id="markCompleted" class="completed-btn">Mark as Completed</button>
+        <p id="completed-text" class="completed-message" style="display: none;">✅ You have completed this data structure!</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 AlgoLearn. All Rights Reserved. <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a></p>
+    </footer>
+
+    <script src="linkedlist.js"></script>
+</body>
+
+</html>

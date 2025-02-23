@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login/Sign-Up | Algorithm Learning Platform</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">AlgoLearn</div>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="auth-container">
+      <div class="auth-forms">
+        <h2 id="form-title">Login</h2>
+        
+        <!-- Login Form -->
+        <form id="login-form" class="form active">
+          <label for="login-email">Email:</label>
+          <input type="email" id="login-email" name="email" placeholder="Enter your email" required>
+
+          <label for="login-password">Password:</label>
+          <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
+
+          <a href="#" class="forgot-password">Forgot Password?</a>
+
+          <button type="submit" class="btn">Login</button>
+          <p class="toggle-form">Don't have an account? <a href="#" id="to-signup">Sign Up</a></p>
+        </form>
+
+        <!-- Sign-Up Form -->
+        <form id="signup-form" class="form" style="display: none;">
+          <label for="signup-username">Username:</label>
+          <input type="text" id="signup-username" name="username" placeholder="Enter your username" required>
+
+          <label for="signup-email">Email:</label>
+          <input type="email" id="signup-email" name="email" placeholder="Enter your email" required>
+
+          <label for="signup-password">Password:</label>
+          <input type="password" id="signup-password" name="password" placeholder="Enter your password" required>
+          <div id="password-feedback">
+            <span id="digit" class="invalid">[0-9]</span>
+            <span id="upper" class="invalid">[A-Z]</span>
+            <span id="lower" class="invalid">[a-z]</span>
+            <span id="special" class="invalid">[@#$%^&*]</span>
+            <span id="length" class="invalid">[8+ chars]</span>
+          </div>
+
+          <label for="signup-confirm-password">Confirm Password:</label>
+          <input type="password" id="signup-confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+
+          <button type="submit" class="btn" id="signup-btn" disabled>Sign Up</button>
+          <p class="toggle-form">Already have an account? <a href="#" id="to-login">Login</a></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 AlgoLearn. All Rights Reserved. <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a></p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

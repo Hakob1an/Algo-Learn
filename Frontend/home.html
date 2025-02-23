@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | Algorithm Learning Platform</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">AlgoLearn</div>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Welcome to AlgoLearn</h1>
+      <p>Explore the world of algorithms and data structures with interactive visualizations and personalized learning paths.</p>
+      <div class="cta-buttons">
+        <a href="login.html?form=signup" class="btn">Start Learning</a>
+        <a href="login.html?form=login" class="btn btn-outline">Sign Up</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 AlgoLearn. All Rights Reserved. <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a></p>
+  </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const userEmail = localStorage.getItem("userEmail");
+      if (userEmail) {
+        window.location.href = "dashboard.html";
+      }
+    })  
+  </script>
+  <!-- <script src="main.js"></script> -->
+</body>
+</html>

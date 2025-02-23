@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Sort | Algorithm Learning</title>
+    <link rel="stylesheet" href="quicksort.css">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo"><a href="../../home.html">AlgoLearn</a></div>
+            <ul class="nav-links">
+                <li><a href="../../home.html">Home</a></li>
+                <li><a href="../../learn.html">Learn</a></li>
+                <li><a href="../../profile.html">Profile</a></li>
+                <li><a href="../../about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Quick Sort</h1>
+
+        <p>
+            Quick Sort is one of the most **efficient sorting algorithms**. It follows a **divide-and-conquer approach**, meaning it splits the problem into smaller subproblems and solves them recursively.
+        </p>
+
+        <h2>How Quick Sort Works</h2>
+        <p>
+            The **main idea** behind Quick Sort is selecting a **pivot element** and rearranging the array such that:
+        </p>
+        <ul>
+            <li>All elements **smaller** than the pivot go to the left.</li>
+            <li>All elements **greater** than the pivot go to the right.</li>
+            <li>The process **repeats recursively** until the entire array is sorted.</li>
+        </ul>
+
+        <h2>Step-by-Step Example</h2>
+        <p>Let's sort the array <code>[8, 3, 1, 7, 4, 6, 2]</code> using Quick Sort.</p>
+
+        <h3>Step 1: Choose a Pivot</h3>
+        <p>We select the **last element** <code>2</code> as the pivot.</p>
+
+        <h3>Step 2: Partitioning</h3>
+        <p>Rearrange the array so elements smaller than <code>2</code> go to the left:</p>
+        <pre>[1]  [2]  [8, 3, 7, 4, 6]</pre>
+
+        <h3>Step 3: Recursively Sort Left & Right Subarrays</h3>
+        <p>Now we apply Quick Sort to the left and right partitions.</p>
+
+        <h2>Pseudocode</h2>
+        <pre>
+function quickSort(array, low, high):
+    if low < high:
+        pivotIndex = partition(array, low, high)
+        quickSort(array, low, pivotIndex - 1)
+        quickSort(array, pivotIndex + 1, high)
+
+function partition(array, low, high):
+    pivot = array[high]
+    i = low - 1
+    for j from low to high - 1:
+        if array[j] < pivot:
+            i = i + 1
+            swap(array[i], array[j])
+    swap(array[i + 1], array[high])
+    return i + 1
+        </pre>
+
+        <h2>Time Complexity</h2>
+        <ul>
+            <li><strong>Best-case:</strong> <code>O(n log n)</code> (Balanced partitioning)</li>
+            <li><strong>Average-case:</strong> <code>O(n log n)</code></li>
+            <li><strong>Worst-case:</strong> <code>O(n²)</code> (Already sorted array without optimization)</li>
+        </ul>
+
+        <h2>Advantages of Quick Sort</h2>
+        <ul>
+            <li>**Fast for large datasets** due to **O(n log n)** complexity in most cases.</li>
+            <li>**In-place sorting** (requires minimal extra memory).</li>
+            <li>**Used in real-world applications** like database indexing and system sorting functions.</li>
+        </ul>
+
+        <h2>Disadvantages</h2>
+        <ul>
+            <li>**Not stable** (relative order of equal elements may change).</li>
+            <li>**Worst-case complexity is O(n²)** (if pivot selection is bad).</li>
+        </ul>
+
+        <h2>Interactive Visualization</h2>
+
+        <div class="visualization-container">
+            <div class="user-input">
+                <label for="numbers">Enter numbers (comma separated):</label>
+                <input type="text" id="numbers" placeholder="e.g., 15, 10, 25, 30">
+                <button id="startSortingButton">Start Sorting</button>
+            </div>
+            <div id="visualization"></div>
+        </div>
+
+        <button id="markCompleted" class="completed-btn">Mark as Completed</button>
+        <p id="completed-text" class="completed-message" style="display: none;">✅ You have completed this algorithm!</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 AlgoLearn. All Rights Reserved. <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a></p>
+    </footer>
+
+    <script src="quicksort.js"></script>
+</body>
+</html>

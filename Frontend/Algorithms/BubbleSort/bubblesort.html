@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort | Algorithm Learning</title>
+    <link rel="stylesheet" href="bubblesort.css">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo"><a href="../../home.html">AlgoLearn</a></div>
+            <ul class="nav-links">
+                <li><a href="../../home.html">Home</a></li>
+                <li><a href="../../learn.html">Learn</a></li>
+                <li><a href="../../profile.html">Profile</a></li>
+                <li><a href="../../about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Bubble Sort</h1>
+    <p>
+        Bubble sort is a fundamental sorting algorithm in computer science, distinguished by its simple method of 
+        repeatedly traversing through the list and comparing pairs of adjacent elements. Whenever two consecutive 
+        elements are found to be out of order—for instance, if the left element is greater than the right element 
+        in an ascending sort—the algorithm swaps them. As it iterates from the beginning of the list to the end, 
+        larger elements gradually “bubble” toward the rightmost positions with each pass, while smaller elements 
+        remain near the left side. This process continues until the list is sorted, which is signaled by a complete 
+        traversal that encounters no required swaps.
+    </p>
+    
+    <p>
+        In mathematical terms, bubble sort exhibits a time complexity of <code>O(n²)</code> for both worst-case and 
+        average-case scenarios, where <code>n</code> represents the number of elements in the list. The quadratic 
+        nature of this complexity means that bubble sort may become prohibitively slow when dealing with large 
+        collections of data, thereby rendering it less practical than more efficient algorithms such as merge sort, 
+        quicksort, or heapsort in most real-world settings.
+    </p>
+
+    <h2>Educational Value</h2>
+    <p>
+        Despite its inefficiency in handling large inputs, bubble sort remains an instructive example of core 
+        algorithmic principles. The conceptual simplicity of its step-by-step comparison process makes it an ideal 
+        tool for teaching foundational topics such as algorithmic thinking, loop construction, and the notion of 
+        incremental progress in sorting.
+    </p>
+
+    <h2>Optimization</h2>
+    <p>
+        An optimized version of bubble sort incorporates a flag to detect whether any swaps have been performed 
+        during a given pass. If a complete pass results in no swaps, the array must already be sorted, and the 
+        algorithm can terminate early. While this optimization helps with nearly sorted inputs, bubble sort’s 
+        performance remains hindered by its excessive comparisons and swaps.
+    </p>
+
+    <h2>Example of Bubble Sort in Action</h2>
+    <p>Suppose we have an unsorted list of integers:</p>
+    <pre>[5, 3, 8, 4, 2]</pre>
+
+    <h3>First Pass:</h3>
+    <ul>
+        <li>Compare (5, 3) → swap → <code>[3, 5, 8, 4, 2]</code></li>
+        <li>Compare (5, 8) → no swap</li>
+        <li>Compare (8, 4) → swap → <code>[3, 5, 4, 8, 2]</code></li>
+        <li>Compare (8, 2) → swap → <code>[3, 5, 4, 2, 8]</code></li>
+    </ul>
+
+    <h3>Second Pass:</h3>
+    <ul>
+        <li>Compare (3, 5) → no swap</li>
+        <li>Compare (5, 4) → swap → <code>[3, 4, 5, 2, 8]</code></li>
+        <li>Compare (5, 2) → swap → <code>[3, 4, 2, 5, 8]</code></li>
+    </ul>
+
+    <h3>Third Pass:</h3>
+    <ul>
+        <li>Compare (3, 4) → no swap</li>
+        <li>Compare (4, 2) → swap → <code>[3, 2, 4, 5, 8]</code></li>
+    </ul>
+
+    <h3>Fourth Pass:</h3>
+    <ul>
+        <li>Compare (3, 2) → swap → <code>[2, 3, 4, 5, 8]</code></li>
+    </ul>
+    <p>At this point, the list is sorted.</p>
+
+    <h2>Time and Space Complexity</h2>
+    <ul>
+        <li><strong>Worst-case:</strong> <code>O(n²)</code> (Reverse order list)</li>
+        <li><strong>Average-case:</strong> <code>O(n²)</code></li>
+        <li><strong>Best-case:</strong> <code>O(n)</code> (Already sorted list)</li>
+        <li><strong>Space Complexity:</strong> <code>O(1)</code> (In-place sorting algorithm)</li>
+    </ul>
+
+    <h2>Pros and Cons</h2>
+
+    <h3>Advantages</h3>
+    <ul>
+        <li><strong>Simplicity:</strong> Easy to understand and implement.</li>
+        <li><strong>In-Place Sorting:</strong> Does not require extra memory.</li>
+        <li><strong>Stable:</strong> Maintains relative order of equal elements.</li>
+    </ul>
+
+    <h3>Disadvantages</h3>
+    <ul>
+        <li><strong>Poor Performance:</strong> Quadratic time complexity makes it inefficient for large lists.</li>
+        <li><strong>Excessive Comparisons and Swaps:</strong> Leads to unnecessary computations.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>
+        While bubble sort is rarely used in practical applications due to its inefficiency, it remains an excellent 
+        educational tool for understanding sorting algorithms. Its simplicity and stability make it a useful algorithm 
+        for small datasets and teaching purposes, but for larger datasets, more efficient sorting algorithms like 
+        quicksort, mergesort, or heapsort are preferred.
+    </p>
+
+        <h2>Interactive Visualization</h2>
+
+        <div class="visualization-container">
+            <div class="user-input">
+                <label for="numbers">Enter numbers (comma separated):</label>
+                <input type="text" id="numbers" placeholder="e.g., 15, 10, 25, 30">
+                <button id="startSortingButton">Start Sorting</button>
+            </div>
+            <div id="visualization"></div>
+        </div>
+
+        <button id="markCompleted" class="completed-btn">Mark as Completed</button>
+        <p id="completed-text" class="completed-message" style="display: none;">✅ You have completed this algorithm!</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 AlgoLearn. All Rights Reserved. <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a></p>
+    </footer>
+
+    <script src="bubblesort.js"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dijkstra's Algorithm | Algorithm Learning</title>
+    <link rel="stylesheet" href="dijkstra.css">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo"><a href="../../home.html">AlgoLearn</a></div>
+            <ul class="nav-links">
+                <li><a href="../../home.html">Home</a></li>
+                <li><a href="../../learn.html">Learn</a></li>
+                <li><a href="../../profile.html">Profile</a></li>
+                <li><a href="../../about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Dijkstra's Algorithm</h1>
+
+        <p>
+            Dijkstra's Algorithm is a <strong>greedy algorithm</strong> used to find the shortest paths from a single source vertex to all other vertices in a weighted graph. 
+            It works only with graphs that have <strong>non-negative edge weights</strong>.
+        </p>
+
+        <h2>Core Idea</h2>
+        <p>
+            Starting from the source node, the algorithm maintains a set of nodes whose shortest distance from the source is known. 
+            It then repeatedly selects the node with the smallest tentative distance and <strong>relaxes</strong> (updates) the distances of its adjacent nodes. 
+            "Relaxing" means checking if a shorter path to a neighboring node can be found by going through the current node and updating the neighbor's distance accordingly.
+        </p>
+
+        <h2>How It Works</h2>
+        <h3>Initialization:</h3>
+        <ul>
+            <li>Set the distance to the source node as 0.</li>
+            <li>Set the distances to all other nodes as infinity (∞) since they are initially unreachable.</li>
+            <li>Insert all nodes into a priority queue (or a min-heap) keyed by their current distance values.</li>
+        </ul>
+
+        <h3>Processing Nodes:</h3>
+        <ul>
+            <li>While the priority queue is not empty, extract the node <code>u</code> with the smallest distance.</li>
+            <li>For each neighbor <code>v</code> of <code>u</code>, check if the path from the source to <code>v</code> via <code>u</code> is shorter than the recorded distance.</li>
+            <li>If yes, update <code>v</code>'s distance and adjust its position in the priority queue.</li>
+        </ul>
+
+        <h3>Termination:</h3>
+        <p>
+            The algorithm continues until every node has been processed (i.e., the priority queue is empty). At that point, the shortest path from the source to each vertex has been determined.
+        </p>
+
+        <h2>Pseudocode</h2>
+        <pre>
+function Dijkstra(Graph, source):
+    // Initialize distances from source to all vertices as infinite
+    for each vertex v in Graph:
+        dist[v] = infinity
+    dist[source] = 0
+
+    // Create a priority queue Q and add all vertices with their distances
+    Q = priority queue containing all vertices in Graph keyed by dist[v]
+
+    while Q is not empty:
+        // Extract vertex u with the smallest distance
+        u = extract_min(Q)
+        
+        // For each neighbor v of u, relax the edge (u, v)
+        for each neighbor v of u:
+            if dist[u] + weight(u, v) < dist[v]:
+                dist[v] = dist[u] + weight(u, v)
+                decrease_key(Q, v, dist[v])  // Update v's distance in the priority queue
+
+    return dist
+        </pre>
+
+        <h2>Time and Space Complexity</h2>
+        <ul>
+            <li><strong>Using a Min-Heap:</strong> <code>O((V + E) log V)</code> (Efficient for sparse graphs)</li>
+            <li><strong>Without Min-Heap:</strong> <code>O(V²)</code> (Slower for large graphs)</li>
+            <li><strong>Space Complexity:</strong> <code>O(V + E)</code> (Depends on graph representation)</li>
+        </ul>
+
+        <h2>Pros and Cons</h2>
+
+        <h3>Pros</h3>
+        <ul>
+            <li><strong>Efficient for Non-negative Weights:</strong> Works well for graphs with non-negative edge weights.</li>
+            <li><strong>Optimal Single-Source Shortest Paths:</strong> Finds the shortest path from a single source.</li>
+            <li><strong>Widely Used:</strong> Common in routing and network optimization.</li>
+        </ul>
+
+        <h3>Cons</h3>
+        <ul>
+            <li><strong>Non-negative Weights Only:</strong> Cannot handle graphs with negative edge weights.</li>
+            <li><strong>Single-Source Limitation:</strong> Must be run multiple times for all-pairs shortest paths.</li>
+            <li><strong>Implementation Complexity:</strong> Efficient priority queue implementation can be tricky.</li>
+        </ul>
+
+        <h2>Interactive Visualization</h2>
+
+        <div class="visualization-container">
+            <div class="user-input">
+                <label for="start-node">Start Node:</label>
+                <input type="number" id="start-node" placeholder="e.g. 0">
+
+                <label for="end-node">End Node:</label>
+                <input type="number" id="end-node" placeholder="e.g. 4">
+
+                <button id="startDijkstraButton">Start Graph Visualization</button>
+            </div>
+            <div id="visualization"></div>
+        </div>
+
+        <button id="markCompleted" class="completed-btn">Mark as Completed</button>
+        <p id="completed-text" class="completed-message" style="display: none;">✅ You have completed this algorithm!</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 AlgoLearn. All Rights Reserved. <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a></p>
+    </footer>
+
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="dijkstra.js"></script>
+</body>
+</html>

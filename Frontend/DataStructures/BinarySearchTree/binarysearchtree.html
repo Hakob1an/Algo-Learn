@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Search Tree | AlgoLearn</title>
+    <link rel="stylesheet" href="binarysearchtree.css">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo"><a href="../../home.html">AlgoLearn</a></div>
+            <ul class="nav-links">
+                <li><a href="../../home.html">Home</a></li>
+                <li><a href="../../learn.html">Learn</a></li>
+                <li><a href="../../profile.html">Profile</a></li>
+                <li><a href="../../about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Binary Search Tree (BST)</h1>
+        <p>A Binary Search Tree (BST) is a specialized binary tree that maintains an ordered structure, allowing for
+            efficient searching, insertion, and deletion operations.</p>
+
+        <h2>Node Structure</h2>
+        <ul>
+            <li><strong>Key (or Data):</strong> The value stored in the node.</li>
+            <li><strong>Left Child:</strong> A reference to the left subtree.</li>
+            <li><strong>Right Child:</strong> A reference to the right subtree.</li>
+        </ul>
+
+        <h2>BST Properties</h2>
+        <ul>
+            <li>All keys in the **left subtree** are **less** than the node’s key.</li>
+            <li>All keys in the **right subtree** are **greater** than the node’s key.</li>
+            <li>This ordering allows efficient search and insertion operations.</li>
+        </ul>
+
+        <h2>BST Structure Example</h2>
+        <pre>
+        15
+       /  \
+      10   20
+     / \    \
+    8  12   25
+            </pre>
+        <p>In this BST:</p>
+        <ul>
+            <li>The **root node** is **15**.</li>
+            <li>All nodes in the **left subtree** of 15 (**10, 8, 12**) have values **less** than 15.</li>
+            <li>All nodes in the **right subtree** of 15 (**20, 25**) have values **greater** than 15.</li>
+        </ul>
+
+        <h2>BST Operations</h2>
+        <p>The following are the key operations performed on a BST:</p>
+
+        <h3>Insertion</h3>
+        <pre>
+function BST_Insert(root, key):
+    if root == null:
+        return createNode(key)
+    if key < root.key:
+        root.left = BST_Insert(root.left, key)
+    else:
+        root.right = BST_Insert(root.right, key)
+    return root
+            </pre>
+
+        <h3>Search</h3>
+        <pre>
+function BST_Search(root, key):
+    if root == null or root.key == key:
+        return root
+    if key < root.key:
+        return BST_Search(root.left, key)
+    else:
+        return BST_Search(root.right, key)
+            </pre>
+
+        <h3>Deletion</h3>
+        <pre>
+function BST_Delete(root, key):
+    if root == null:
+        return null
+    if key < root.key:
+        root.left = BST_Delete(root.left, key)
+    else if key > root.key:
+        root.right = BST_Delete(root.right, key)
+    else:
+        if root.left == null:
+            return root.right
+        else if root.right == null:
+            return root.left
+        temp = findMin(root.right)
+        root.key = temp.key
+        root.right = BST_Delete(root.right, temp.key)
+    return root
+            </pre>
+
+        <h2>BST Complexity</h2>
+        <ul>
+            <li><strong>Search:</strong> **O(log n)** (Balanced) / **O(n)** (Skewed)</li>
+            <li><strong>Insertion:</strong> **O(log n)** (Balanced) / **O(n)** (Skewed)</li>
+            <li><strong>Deletion:</strong> **O(log n)** (Balanced) / **O(n)** (Skewed)</li>
+        </ul>
+
+        <h2>Binary Search Tree Visualization</h2>
+        <p>Use the input fields below to dynamically insert, delete, or search values in the BST.</p>
+
+        <div class="visualization-container">
+            <div class="user-input">
+                <label for="insertValue"><strong>Insert:</strong></label>
+                <input type="number" id="insertValue" placeholder="Enter a number">
+                <button id="btnInsert">Insert</button>
+    
+                <label for="deleteValue"><strong>Delete:</strong></label>
+                <input type="number" id="deleteValue" placeholder="Enter a number">
+                <button id="btnDelete">Delete</button>
+    
+                <label for="searchValue"><strong>Search:</strong></label>
+                <input type="number" id="searchValue" placeholder="Enter a number">
+                <button id="btnSearch">Search</button>
+            </div>
+        </div>
+
+        <div id="visualization"></div>
+
+        <!-- Mark as Completed Feature -->
+        <button id="markCompleted" class="completed-btn">Mark as Completed</button>
+        <p id="completed-text" class="completed-message" style="display: none;">✅ You have completed this data
+            structure!</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 AlgoLearn. All Rights Reserved. <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a></p>
+    </footer>
+
+    <script src="binarysearchtree.js"></script>
+</body>
+
+</html>
